@@ -20,7 +20,7 @@ pipeline {
                 sh 'git clone https://github.com/Orelbaz/flask-docker.git'
                 sh 'ls'
                 sh 'echo "Dockring..."'
-                sh 'cd flask-docker/alpaca-flask'
+                sh 'cd /var/lib/jenkins/workspace/flask-docker/alpaca-flask'
                 sh 'ls'
                 sh 'docker build -t orelbaz/flak-docker:1.0 .'
                 sh 'echo "Pushing to DockerHub"'
