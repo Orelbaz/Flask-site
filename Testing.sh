@@ -1,8 +1,6 @@
 #!/bin/bash
 TEST_IP=$(aws ec2 describe-instances --region eu-central-1 --filters Name=tag:tagas,Values=test --query 'Reservations[].Instances[].PublicIpAddress' --output text)
 
-ssh -o StrictHostKeyChecking=no -i /var/lib/jenkins/or2.pem ec2-user@${TEST_IP} "sudo systemctl restart flask.service"
-
 response=$(curl -s -o /dev/null -w "%{http_code}" ${TEST_IP}:5000)
 
 if [[ $response == 200 ]]; then
