@@ -59,7 +59,7 @@ pipeline {
                 script {
                     sh """ 
                     ssh -o StrictHostKeyChecking=no -i /var/lib/jenkins/or.pem ec2-user@${PROD_IP} '
-                    sudo yum install docker.io -y
+                    sudo yum install docker -y
                     sudo systemctl enable docker
                     sudo systemctl start docker
                     sudo docker pull orelbaz/flak-docker:1.0
