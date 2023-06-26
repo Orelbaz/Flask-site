@@ -37,7 +37,7 @@ pipeline {
                     sudo systemctl enable docker
                     sudo systemctl start docker
                     sudo docker pull orelbaz/flak-docker:1.0
-                    sudo lsof -i :5000
+                    sudo kill $(sudo lsof -t -i :5000)
                     sudo docker run -d -p 5000:5000 orelbaz/flak-docker:1.0
                     '
                     """
