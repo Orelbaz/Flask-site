@@ -36,7 +36,9 @@ pipeline {
                     sudo yum install docker -y
                     sudo systemctl enable docker
                     sudo systemctl start docker
-                    sudo fuser -k 5000/tcp
+                    sudo systemctl stop docker
+                    sudo pkill -9 -f docker
+                    sudo systemctl start docker
                     sudo docker pull orelbaz/flak-docker:1.0
                     sudo docker run -d -p 5000:5000 orelbaz/flak-docker:1.0
                     '
