@@ -32,7 +32,7 @@ pipeline {
             steps {
                 script {
                     sh """ 
-                    ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -i /var/lib/jenkins/or2.pem ec2-user@${PROD_IP} '
+                    ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -i /var/lib/jenkins/or.pem ec2-user@${PROD_IP} '
                     sudo yum install docker -y
                     sudo docker pull orelbaz/flak-docker:1.0
                     sudo docker run -d -p 5000:5000 orelbaz/flak-docker:1.0
@@ -54,7 +54,7 @@ pipeline {
             steps {
                 script {
                     sh """ 
-                    ssh -o StrictHostKeyChecking=no -i /var/lib/jenkins/or2.pem ec2-user@${PROD_IP} '
+                    ssh -o StrictHostKeyChecking=no -i /var/lib/jenkins/or.pem ec2-user@${PROD_IP} '
                     yum install docker.io -y
                     docker pull orelbaz/flak-docker:1.0
                     docker run -d -p 5000:5000 orelbaz/flak-docker:1.0
