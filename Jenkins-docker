@@ -32,7 +32,7 @@ pipeline {
             steps {
                 script {
                     sh """ 
-                    ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -i /var/lib/jenkins/or.pem ec2-user@${TEST_IP} '
+                    ssh -o StrictHostKeyChecking=no -i /var/lib/jenkins/or.pem ec2-user@${TEST_IP} '
                     sudo yum install docker -y
                     sudo systemctl enable docker
                     sudo systemctl start docker
