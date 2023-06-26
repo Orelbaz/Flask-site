@@ -35,8 +35,6 @@ pipeline {
                     ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -i /var/lib/jenkins/or.pem ec2-user@${TEST_IP} '
                     sudo yum install docker -y
                     sudo systemctl enable docker
-                    sudo systemctl start docker
-                    sudo systemctl stop docker
                     sudo pkill -9 -f docker
                     sudo systemctl start docker
                     sudo docker pull orelbaz/flak-docker:1.0
