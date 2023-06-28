@@ -33,12 +33,7 @@ pipeline {
                 script {
                     sh """ 
                     ssh -o StrictHostKeyChecking=no -i /var/lib/jenkins/or.pem ec2-user@${TEST_IP} '
-                    sudo yum install docker -y
-                    sudo systemctl enable docker
-                    sudo systemctl start docker
-                    sudo docker pull orelbaz/flak-docker:1.0
-                    sudo docker stop \$(sudo docker ps -aq)
-                    sudo docker rm \$(sudo docker ps -aq)
+                    /bin/bash /var/lib/jenkins/workspace/flask-docker-pipeline/flask-docker/deploy.sh
                     sudo docker run -d -p 5000:5000 orelbaz/flak-docker:1.0
                     '
                     """
@@ -59,12 +54,7 @@ pipeline {
                 script {
                     sh """ 
                     ssh -o StrictHostKeyChecking=no -i /var/lib/jenkins/or.pem ec2-user@${PROD_IP} '
-                    sudo yum install docker -y
-                    sudo systemctl enable docker
-                    sudo systemctl start docker
-                    sudo docker pull orelbaz/flak-docker:1.0
-                    sudo docker stop \$(sudo docker ps -aq)
-                    sudo docker rm \$(sudo docker ps -aq)
+                    /bin/bash /var/lib/jenkins/workspace/flask-docker-pipeline/flask-docker/deploy.sh
                     sudo docker run -d -p 5000:5000 orelbaz/flak-docker:1.0
                     '
                     """
