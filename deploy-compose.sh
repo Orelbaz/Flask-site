@@ -18,6 +18,7 @@ scp -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -i /var/lib/jenk
 
 ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -i /var/lib/jenkins/or.pem ec2-user@${INSTANCE_IP} "
 pwd
+cd /home/ec2-user
 sudo docker pull orelbaz/flak-docker:1.0
 sudo docker-compose up -d
 "
