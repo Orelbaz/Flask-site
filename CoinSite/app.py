@@ -37,7 +37,6 @@ def index():
 
     redis.hincrby('entrance_count', 'total', 1)
     count = redis.hget('entrance_count', 'total').decode('utf-8')
-    url = random.choice(images)
 
     return render_template("index.html", url=url, count=int(count), coins=coins)
 
