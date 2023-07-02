@@ -5,7 +5,7 @@ pipeline {
         PROD_IP = sh(script: "aws ec2 describe-instances --region eu-central-1 --filters Name=tag:tagas,Values=prod --query 'Reservations[].Instances[].PublicIpAddress' --output text", returnStdout: true).trim()
     }
     triggers {
-        pollSCM('*/10 * * * *')
+        pollSCM('*/1 * * * *')
     }
     stages {
         stage('Cleanup') {
