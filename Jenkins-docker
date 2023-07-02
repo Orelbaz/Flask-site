@@ -25,7 +25,7 @@ pipeline {
             }
         }
         stage('Test-server') {
-            steps {ghj
+            steps {
                     sh '/bin/bash /var/lib/jenkins/workspace/docker-pipeline/flask-docker/deploy.sh ${TEST_IP} '
                     sh 'echo "Running tests..."'
                     sh '/bin/bash "/var/lib/jenkins/workspace/docker-pipeline/flask-docker/Testing.sh"'
