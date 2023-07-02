@@ -1,7 +1,19 @@
-version: "3"
+version: '3'
 services:
-  app:
-    image: orelbaz/coin:${VER}
-    build: .
+  redis:
+    image: redislabs/redismod
+    container_name: redis
+    restart: always
     ports:
-      - "5000:5000"
+      - '6379:6379'
+
+  flask:
+    image: orelbaz/coin:${VER}
+    container_name: flask
+    restart: always
+    ports:
+      - '5000:5000'
+    volumes:
+      - .:/app
+    depends_on:
+      - redis
