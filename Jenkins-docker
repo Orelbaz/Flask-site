@@ -31,7 +31,6 @@ pipeline {
         stage('Test-server') {
             steps {
                     sh '/bin/bash /var/lib/jenkins/workspace/flask-docker-pipeline/flask-docker/deploy.sh ${TEST_IP} '
-                    sh 'sudo docker run -d -p 5000:5000 orelbaz/flak-docker:1.0'
                     sh 'echo "Running tests..."'
                     sh '/bin/bash "/var/lib/jenkins/workspace/docker-pipeline/flask-docker/Testing.sh"'
             }
