@@ -38,7 +38,7 @@ def index():
     redis.hincrby('entrance_count', 'total', 1)
     count = redis.hget('entrance_count', 'total').decode('utf-8')
 
-    return render_template("index.html", url=url, count=int(count), coins=coins)
+    return render_template("index.html", count=int(count), coins=coins)
 
 
 @app.route('/get_price/<symbol>')
