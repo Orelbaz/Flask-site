@@ -33,7 +33,7 @@ pipeline {
                 script {
                     sh """ 
                     ssh -o StrictHostKeyChecking=no -i /var/lib/jenkins/or.pem ec2-user@${TEST_IP} '
-                    chmod 777 /var/lib/jenkins/workspace/docker-pipeline/flask-docker/deploy.sh
+                    chmod 777 workspace/docker-pipeline/flask-docker/deploy.sh
                     /bin/bash /var/lib/jenkins/workspace/docker-pipeline/flask-docker/deploy.sh
                     sudo docker run -d -p 5000:5000 orelbaz/flak-docker:1.0
                     '
