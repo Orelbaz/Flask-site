@@ -13,8 +13,8 @@ sudo curl -L "https://github.com/docker/compose/releases/latest/download/docker-
 sudo chmod +x /usr/local/bin/docker-compose
 sudo systemctl enable docker
 sudo systemctl start docker
-sudo docker stop \$(sudo docker ps -aq)
-sudo docker rm \$(sudo docker ps -aq)
+#sudo docker stop \$(sudo docker ps -aq)
+#sudo docker rm \$(sudo docker ps -aq)
 sudo docker pull orelbaz/coinsite:1.0
 pwd
 cd /home/ec2-user
