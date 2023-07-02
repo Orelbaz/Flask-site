@@ -43,7 +43,7 @@ pipeline {
         }
         stage('Prod-server') {
             steps { 
-                sh '/bin/bash /var/lib/jenkins/workspace/docker-pipeline/flask-docker/deploy.sh ${PROD_IP} '
+                sh '/bin/bash /var/lib/jenkins/workspace/docker-pipeline/flask-docker/deploy-compose.sh ${PROD_IP} '
             }
         }
     }
