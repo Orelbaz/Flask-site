@@ -38,7 +38,7 @@ pipeline {
                     '
                     """
                     sh 'echo "Running tests..."'
-                    sh '/bin/bash "/var/lib/jenkins/workspace/docker-pipeline/flask-docker/Jenkins-docker/Testing.sh"'
+                    sh '/bin/bash "/var/lib/jenkins/workspace/docker-pipeline/flask-docker/Testing.sh"'
                } 
             }
         }
