@@ -5,7 +5,7 @@ pipeline {
         PROD_IP = sh(script: "aws ec2 describe-instances --region eu-central-1 --filters Name=tag:tagas,Values=prod --query 'Reservations[].Instances[].PublicIpAddress' --output text", returnStdout: true).trim()
     }
     triggers {
-        pollSCM('*/10 * * * *')
+        pollSCM('*/1 * * * *')
     }
     stages {
         stage('Cleanup') {
@@ -20,7 +20,7 @@ pipeline {
                 sh 'git clone https://github.com/Orelbaz/flask-docker.git'
                 sh 'ls'
                 sh 'echo "Dockring..."'
-                dir('/var/lib/jenkins/workspace/docker-compose-pipeline/flask-docker/CoinSite') {
+                dir('/var/lib/jenkins/workspace/docker-pipeline/flask-docker/CoinSite') {
                 sh 'docker build -t orelbaz/flak-docker:1.0 .'
                 sh 'echo "Pushing to DockerHub"'
                 sh 'docker push orelbaz/flak-docker:1.0'
@@ -29,9 +29,9 @@ pipeline {
         }
         stage('Test-server') {
             steps {
-                sh '/bin/bash /var/lib/jenkins/workspace/docker-compose-pipeline/flask-docker/deploy-compose.sh ${TEST_IP} '
-                sh 'echo "Running tests..."'
-                sh '/bin/bash "/var/lib/jenkins/workspace/docker-compose-pipeline/flask-docker/Testing.sh"'
+                    sh '/bin/bash /var/lib/jenkins/workspace/docker-pipeline/flask-docker/deploy-compose.sh ${TEST_IP} '
+                    sh 'echo "Running tests..."'
+                    sh '/bin/bash "/var/lib/jenkins/workspace/docker-pipeline/flask-docker/Testing.sh"'
             }
         }
         stage ('Aprove') {
@@ -43,7 +43,7 @@ pipeline {
         }
         stage('Prod-server') {
             steps { 
-                sh '/bin/bash /var/lib/jenkins/workspace/docker-compose-pipeline/flask-docker/deploy-compose.sh ${PROD_IP} '
+                sh '/bin/bash /var/lib/jenkins/workspace/docker-pipeline/flask-docker/deploy.sh ${PROD_IP} '
             }
         }
     }
