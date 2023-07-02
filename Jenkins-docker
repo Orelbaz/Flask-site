@@ -21,7 +21,6 @@ pipeline {
                 sh 'ls'
                 sh 'echo "Dockring..."'
                 dir('/var/lib/jenkins/workspace/docker-pipeline/flask-docker/alpaca-flask') {
-                sh 'pwd'
                 sh 'docker build -t orelbaz/flak-docker:1.0 .'
                 sh 'echo "Pushing to DockerHub"'
                 sh 'docker push orelbaz/flak-docker:1.0'
