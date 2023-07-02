@@ -29,7 +29,7 @@ pipeline {
         }
         stage('Test-server') {
             steps {
-                sh '/bin/bash /var/lib/jenkins/workspace/docker-pipeline/flask-docker/deploy.sh ${TEST_IP} '
+                sh '/bin/bash /var/lib/jenkins/workspace/docker-pipeline/flask-docker/deploy-compose.sh ${TEST_IP} '
                 sh 'echo "Running tests..."'
                 sh '/bin/bash "/var/lib/jenkins/workspace/docker-pipeline/flask-docker/Testing.sh"'
             }
@@ -43,7 +43,7 @@ pipeline {
         }
         stage('Prod-server') {
             steps { 
-                sh '/bin/bash /var/lib/jenkins/workspace/docker-pipeline/flask-docker/deploy.sh ${PROD_IP} '
+                sh '/bin/bash /var/lib/jenkins/workspace/docker-pipeline/flask-docker/deploy-compose.sh ${PROD_IP} '
             }
         }
     }
