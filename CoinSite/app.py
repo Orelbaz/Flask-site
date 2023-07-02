@@ -29,6 +29,11 @@ def get_realtime_price(symbol):
     else:
         return 'N/A'
 
+    redis.hincrby('entrance_count', 'total', 1)
+    count = redis.hget('entrance_count', 'total').decode('utf-8')
+    url = random.choice(images)
+    return render_template("index.html", url=url, count=int(count))
+
 
 @app.route('/')
 def index():
@@ -40,15 +45,6 @@ def index():
 @app.route('/get_price/<symbol>')
 def get_price(symbol):
     return get_realtime_price(symbol)
-
-
-@app.route("/")
-def index():
-    redis.hincrby('entrance_count', 'total', 1)
-    count = redis.hget('entrance_count', 'total').decode('utf-8')
-    url = random.choice(images)
-    return render_template("index.html", url=url, count=int(count))
-
 
 
 if __name__ == '__main__':
