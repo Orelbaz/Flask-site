@@ -30,16 +30,16 @@ def get_realtime_price(symbol):
         return 'N/A'
 
 
-
 @app.route('/')
 def index():
     for coin in coins:
         coin['worth'] = get_realtime_price(coin['symbol'])
-    return render_template('index.html', coins=coins)
+
     redis.hincrby('entrance_count', 'total', 1)
     count = redis.hget('entrance_count', 'total').decode('utf-8')
     url = random.choice(images)
-    return render_template("index.html", url=url, count=int(count))
+
+    return render_template("index.html", url=url, count=int(count), coins=coins)
 
 
 @app.route('/get_price/<symbol>')
