@@ -9,5 +9,6 @@ sudo systemctl start docker
 sudo docker pull orelbaz/flak-docker:1.0
 sudo docker stop \$(sudo docker ps -aq)
 sudo docker rm \$(sudo docker ps -aq)
+cd /var/lib/jenkins/workspace/docker-compose-pipeline/flask-docker/CoinSite
 sudo docker-compose up
 "
