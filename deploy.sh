@@ -2,7 +2,7 @@
 
 INSTANCE_IP=$1
 
-ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -i /var/lib/jenkins/raz-key.pem ec2-user@${INSTANCE_IP} "
+ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -i /var/lib/jenkins/or.pem ec2-user@${INSTANCE_IP} "
 sudo yum install docker -y
 sudo systemctl enable docker
 sudo systemctl start docker
