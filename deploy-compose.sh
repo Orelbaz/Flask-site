@@ -14,7 +14,7 @@ sudo docker rm \$(sudo docker ps -aq)
 "
 
 echo 'Copying docker-compose.yml to instance...'
-scp -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -i /var/lib/jenkins/or.pem /var/lib/jenkins/workspace/docker-compose-pipeline/flask-docker/CoinSite/docker-compose.yml ec2-user@${INSTANCE_IP}:/home/ec2-user
+scp -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -i /var/lib/jenkins/or.pem /var/lib/jenkins/workspace/docker-compose-pipeline/flask-docker/CoinSite/docker-compose.yml ec2-user@${INSTANCE_IP}:
 
 ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -i /var/lib/jenkins/or.pem ec2-user@${INSTANCE_IP} "
 pwd
