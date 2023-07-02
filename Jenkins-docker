@@ -43,15 +43,8 @@ pipeline {
             }
         }
         stage('Prod-server') {
-            steps {
-                script {
-                    sh """ 
-                    ssh -o StrictHostKeyChecking=no -i /var/lib/jenkins/or.pem ec2-user@${PROD_IP} '
-                    /bin/bash /var/lib/jenkins/workspace/docker-pipeline/flask-docker/deploy.sh
-                    sudo docker run -d -p 5000:5000 orelbaz/flak-docker:1.0
-                    '
-                    """
-                }
+            steps { 
+                sh '/bin/bash /var/lib/jenkins/workspace/docker-pipeline/flask-docker/deploy.sh ${PROD_IP} '
             }
         }
     }
