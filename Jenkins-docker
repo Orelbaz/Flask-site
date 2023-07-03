@@ -3,11 +3,12 @@ pipeline {
         environment {
         TEST_IP = sh(script: "aws ec2 describe-instances --region eu-central-1 --filters Name=tag:tagas,Values=test --query 'Reservations[].Instances[].PublicIpAddress' --output text", returnStdout: true).trim()
         PROD_IP = sh(script: "aws ec2 describe-instances --region eu-central-1 --filters Name=tag:tagas,Values=prod --query 'Reservations[].Instances[].PublicIpAddress' --output text", returnStdout: true).trim()
+        TAG = sh(script: "cat flask-docker/CoinSite/.env | grep TAG | cut -d '=' -f2", returnStdout: true).trim()
     }
     stages {
         stage('Cleanup') {
             steps {
-                sh 'echo "Performing cleanup..."'
+                //cleanup
                 sh 'rm -rf *'
             }
         }
@@ -17,10 +18,10 @@ pipeline {
                 sh 'git clone https://github.com/Orelbaz/flask-docker.git'
                 sh 'ls'
                 sh 'echo "Dockring..."'
-                def TAG = sh(script: "cat /flask-docker/CoinSite/.env | grep TAG | cut -d '=' -f2", returnStdout: true).trim()
+                def TAG = sh(script: "cat .env | grep TAG | cut -d '=' -f2", returnStdout: true).trim()
                 dir('/var/lib/jenkins/workspace/docker-pipeline/flask-docker/CoinSite') {
+                // Build and push the Docker image
                 sh "docker build --build-arg TAG=${TAG} -t orelbaz/coinsite:${TAG} ."
-                sh 'echo "Pushing to DockerHub"'
                 sh "docker push orelbaz/coinsite:${env.TAG}"
                 }
             }
