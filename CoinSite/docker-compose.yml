@@ -6,9 +6,11 @@ services:
     restart: always
     ports:
       - '6379:6379'
+    env_file:
+      - .env
 
   flask:
-    image: orelbaz/coinsite:1.0
+    image: orelbaz/coinsite:${TAG}
     container_name: flask
     restart: always
     ports:
@@ -17,3 +19,5 @@ services:
       - .:/app
     depends_on:
       - redis
+    env_file:
+      - .env
