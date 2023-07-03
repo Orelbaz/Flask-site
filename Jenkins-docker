@@ -9,7 +9,7 @@ pipeline {
             steps {
                 //cleanup
                 sh 'rm -rf *'
-                sh 'sudo docker rmi $(sudo docker images -q)'
+                sh 'docker rmi $(docker images -q)'
             }
         }
         stage('Build') {
