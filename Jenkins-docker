@@ -18,11 +18,11 @@ pipeline {
                 sh 'ls'
                 sh 'echo "Dockring..."'
                 dir('/var/lib/jenkins/workspace/docker-pipeline/flask-docker/CoinSite') {
-                // Extract the TAG variable from .env file
-                def TAG = sh(script: "cat .env | grep TAG | cut -d '=' -f2", returnStdout: true).trim()
-                // Build and push the Docker image
-                sh "docker build --build-arg TAG=${TAG} -t orelbaz/coinsite:${TAG} ."
-                sh "docker push orelbaz/coinsite:${env.TAG}"
+                    // Extract the TAG variable from .env file
+                    def TAG = sh(script: "cat .env | grep TAG | cut -d '=' -f2", returnStdout: true).trim()
+                    // Build and push the Docker image
+                    sh "docker build --build-arg TAG=${TAG} -t orelbaz/coinsite:${TAG} ."
+                    sh "docker push orelbaz/coinsite:${env.TAG}"
                 }
             }
         }
