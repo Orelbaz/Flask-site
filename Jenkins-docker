@@ -18,7 +18,6 @@ pipeline {
                 sh 'git clone https://github.com/Orelbaz/flask-docker.git'
                 sh 'ls'
                 sh 'echo "Dockring..."'
-                def TAG = sh(script: "cat .env | grep TAG | cut -d '=' -f2", returnStdout: true).trim()
                 dir('/var/lib/jenkins/workspace/docker-pipeline/flask-docker/CoinSite') {
                 // Build and push the Docker image
                 sh "docker build --build-arg TAG=${TAG} -t orelbaz/coinsite:${TAG} ."
