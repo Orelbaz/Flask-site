@@ -15,7 +15,7 @@ sudo systemctl enable docker
 sudo systemctl start docker
 sudo docker stop \$(sudo docker ps -aq)
 sudo docker rm \$(sudo docker ps -aq)
-sudo docker pull orelbaz/coinsite:1.0
+sudo docker pull orelbaz/coinsite:latest
 pwd
 cd /home/ec2-user
 sudo docker-compose up -d
