@@ -1,0 +1,140 @@
+/* Body background */
+body {
+<<<<<<< HEAD
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background: linear-gradient(to bottom, #4e54c8, #8f94fb);
+    color: white;
+    font-family: Arial, sans-serif;
+  }
+  
+  /* Stock box styles */
+  .stock-box {
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+  }
+  
+  .stock-box:hover {
+    transform: translateY(-5px);
+    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.3);
+  }
+  
+  .stock-box h3 {
+    margin-top: 0;
+    font-size: 24px;
+  }
+  
+  .stock-box p {
+    margin-bottom: 10px;
+  }
+  
+  /* Button styles */
+  button {
+    background-color: #6f72ca;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+  }
+  
+  button:hover {
+    background-color: #564bbf;
+  }
+  
+  /* Title styles */
+  h1 {
+    font-size: 40px;
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  /* Stock container styles */
+  .stock-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  
+  .stock-box {
+    flex: 0 0 calc(25% - 40px);
+    margin: 20px;
+  }
+  
+=======
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background: linear-gradient(to bottom, #4e54c8, #8f94fb);
+  color: white;
+  font-family: Arial, sans-serif;
+}
+
+/* Stock box styles */
+.stock-box {
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  padding: 20px;
+  margin-bottom: 20px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease;
+}
+
+.stock-box:hover {
+  transform: translateY(-5px);
+  box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.3);
+}
+
+.stock-box h3 {
+  margin-top: 0;
+  font-size: 24px;
+}
+
+.stock-box p {
+  margin-bottom: 10px;
+}
+
+/* Button styles */
+button {
+  background-color: #6f72ca;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #564bbf;
+}
+
+/* Title styles */
+h1 {
+  font-size: 40px;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+/* Stock container styles */
+.stock-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.stock-box {
+  flex: 0 0 calc(25% - 40px);
+  margin: 20px;
+}
+>>>>>>> 852aba495058c3dd4763b83ecb950d75ffb6d224
