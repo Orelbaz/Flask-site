@@ -18,9 +18,9 @@ pipeline {
                 sh 'ls'
                 sh 'echo "Dockring..."'
                 dir('/var/lib/jenkins/workspace/docker-pipeline/flask-docker/CoinSite') {
-                sh 'docker build -t orelbaz/coinsite:1.0 .'
+                sh 'docker build -t orelbaz/coinsite:{TAG} .'
                 sh 'echo "Pushing to DockerHub"'
-                sh 'docker push orelbaz/coinsite:1.0'
+                sh 'docker push orelbaz/coinsite:{TAG}'
                 }
             }
         }
