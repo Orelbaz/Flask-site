@@ -1,6 +1,7 @@
 #!/bin/bash
 
 INSTANCE_IP=$1
+TAG=$2
 
 echo 'Copying docker-compose.yml to instance...'
 scp -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -i /var/lib/jenkins/or.pem /var/lib/jenkins/workspace/docker-pipeline/flask-docker/CoinSite/docker-compose.yml /var/lib/jenkins/or.pem /var/lib/jenkins/workspace/docker-pipeline/flask-docker/CoinSite/.env ec2-user@${INSTANCE_IP}:/home/ec2-user
@@ -15,7 +16,7 @@ sudo systemctl enable docker
 sudo systemctl start docker
 sudo docker stop \$(sudo docker ps -aq)
 sudo docker rm \$(sudo docker ps -aq)
-sudo docker pull orelbaz/coinsite:latest
+sudo docker pull orelbaz/coinsite:${TAG}
 cd /home/ec2-user
 sudo docker-compose up -d
 "
