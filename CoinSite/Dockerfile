@@ -1,5 +1,9 @@
 FROM python:3.8
 
+##
+ARG TAG=latest
+FROM orelbaz/coinsite:${TAG}
+
 # set a directory for the app
 WORKDIR /usr/src/app
 
