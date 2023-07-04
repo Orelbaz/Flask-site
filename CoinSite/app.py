@@ -32,7 +32,7 @@ def get_realtime_price(symbol):
 def index():
     for coin in coins:
         coin['worth'] = get_realtime_price(coin['symbol'])
-    return render_template("index.html", count=int(count), coins=coins)
+    return render_template("index.html", coins=coins)
 
 
 @app.route('/get_price/<symbol>')
