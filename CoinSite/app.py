@@ -1,9 +1,7 @@
 import requests
 from flask import Flask, render_template
-from redis import Redis
 
 app = Flask(__name__)
-redis = Redis(host='redis', port=6379)
 
 API_KEY = "NX6VLQOK2DEROL37"
 
@@ -34,10 +32,6 @@ def get_realtime_price(symbol):
 def index():
     for coin in coins:
         coin['worth'] = get_realtime_price(coin['symbol'])
-
-    redis.hincrby('entrance_count', 'total', 1)
-    count = redis.hget('entrance_count', 'total').decode('utf-8')
-
     return render_template("index.html", count=int(count), coins=coins)
 
 
