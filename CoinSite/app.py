@@ -30,9 +30,10 @@ def get_realtime_price(symbol):
 
 @app.route('/')
 def index():
+    logo_url = "profit.png"
     for coin in coins:
         coin['worth'] = get_realtime_price(coin['symbol'])
-    return render_template("index.html", coins=coins)
+    return render_template("index.html", coins=coins, logo_url=logo_url)
 
 
 @app.route('/get_price/<symbol>')
